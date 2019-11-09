@@ -2,12 +2,12 @@
 
 int Motor;
 int Encoder;
-int Target_velocity = 20;
+int Target_velocity = 50;     //目标速度
 
-void  Set_Pwm(int motor)
+void  Set_Pwm(int motor)      
 {
 	if (motor > 0)
-		PWMA = 500, PWMB = 500 - motor;
+		PWMA = 7200, PWMB = 7200 - motor;
 	else 	              
-		PWMB = 500, PWMA = 500 - motor;
+		PWMB = 7200, PWMA = 7200 - motor;
 }

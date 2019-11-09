@@ -15,7 +15,7 @@
 /**
   * @brief  Main program.
   * @param  None
-  * @retval None
+  * @retval 主函数要尽量的看起来整洁
   */
 int main(void)
 {

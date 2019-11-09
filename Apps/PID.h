@@ -4,6 +4,7 @@
 #include "user_common.h"
 
 void PWM_Limit(int motor);
-int Incremental_PI(int Encoder, int Target);
+int Incremental_PID(int Encoder, int Target);
+int Position_PID(int Encoder, int Target);
 
 #endif   /* __PID_H */

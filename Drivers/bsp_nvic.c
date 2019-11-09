@@ -12,9 +12,9 @@
 
 /**
   * @brief  NVIC中断优先级配置
-  * @param  IRQChannel 	  	中断源  
-  *		      MainPriority	  主优先级
-  *			    SubPriority		  抢占式优先级
+  * @param  IRQChannel 	  	  中断源  
+  *		    MainPriority	  主优先级
+  *			SubPriority		  抢占式优先级
   * @retval None
   */
 	
@@ -28,7 +28,8 @@ void NVIC_Config(uint16_t IRQChannel, uint16_t MainPriority, uint16_t SubPriorit
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = MainPriority;
 	//设置抢占式优先级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = SubPriority;    
-
+	//使能中断
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+
 	NVIC_Init(&NVIC_InitStructure);
 }

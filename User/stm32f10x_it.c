@@ -154,14 +154,15 @@ void SysTick_Handler(void)
 
 void TIM6_IRQHandler(void)
 {
-	if (TIM6->SR & 0X0001)       //即if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET) 
+	if (TIM6->SR & 0X0001)       //即if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET) 检查更新中断是否发生
 	{
 
-		Encoder = Read_Encoder(4);
-		Motor = Incremental_PI(Encoder, Target_velocity);
+		Encoder = Read_Encoder(4);     
+		/*读取CNT值进入pid进行运算输出*/
+		Motor = Incremental_PID(Encoder, Target_velocity);
 		Set_Pwm(Motor);
 
-		TIM6->SR &= ~(1 << 0);    //即TIM_ClearITPendingBit(TIM6, TIM_IT_Update);    
+		TIM6->SR &= ~(1 << 0);    //即TIM_ClearITPendingBit(TIM6, TIM_IT_Update);    清除更新中断标志
 	}
 }
 

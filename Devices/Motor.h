@@ -4,6 +4,7 @@
 #include "user_common.h"
 
 extern incrementalpid_t pid;
+extern positionpid_t PID;
 
 void Motor_Tim_Config(void);
 

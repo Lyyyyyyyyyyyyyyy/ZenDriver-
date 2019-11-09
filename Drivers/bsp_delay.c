@@ -19,14 +19,14 @@ void delay_ms(u32 _ms)
 {
 	u32 i;
 
-	SysTick_Config(SystemCoreClock/1000);
+	SysTick_Config(SystemCoreClock/1000);         //1ms定时器
 
 	for( i = 0; i < _ms; i++)
 	{
-		while(!((SysTick->CTRL)&(1<<16)));
+		while(!((SysTick->CTRL)&(1<<16)));        //判断是否计数完毕
 	}
 
-	SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+	SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;    //清0关闭计数器
 }
 
 /**
@@ -37,7 +37,7 @@ void delay_ms(u32 _ms)
 void delay_us(u32 _us)
 {
 	u32 i;
-	SysTick_Config(SystemCoreClock/1000000);
+	SysTick_Config(SystemCoreClock/1000000);     
 
 	for( i = 0; i < _us; i++)
 	{

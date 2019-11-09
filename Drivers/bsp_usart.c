@@ -11,7 +11,7 @@
 #include "bsp_usart.h"
 
 /**
-* @brief  USART1快速初始化
+* @brief  USART1快速初始化（没加遥控器）
 * @param  USART_BaudRate 	波特率设置
 * @retval None
 * @Using  用于接收DR16接收机Dbus数据
@@ -37,7 +37,7 @@ void USART1_QuickInit(uint32_t USART_BaudRate) {
 	GPIO_InitStructure.GPIO_Pin = USART1_RX_Pin;
 	GPIO_Init(USART1_RX_GPIO_PORT, &GPIO_InitStructure);
 
-	/* 配置串USART 模式 */
+	/* 配置USART 模式 */
 	USART_InitStructure.USART_BaudRate = USART_BaudRate;
 	/* 波特率设置：USART_BAUDRATE */
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
@@ -59,6 +59,7 @@ void USART1_QuickInit(uint32_t USART_BaudRate) {
 	USART_ITConfig(USART1, USART_IT_IDLE, ENABLE);
 	/* 使能串口空闲中断 */
 	USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+	//清除中断标志
 	USART_Cmd(USART1, ENABLE);
 	/* 使能串口 */
 }
