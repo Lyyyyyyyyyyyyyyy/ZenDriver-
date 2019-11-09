@@ -2,7 +2,7 @@
 
 int Motor;
 int Encoder;
-int Target_velocity = 50;     //目标速度
+int Target_velocity = 20;     //目标速度
 
 void  Set_Pwm(int motor)      
 {
